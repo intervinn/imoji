@@ -46,3 +46,18 @@ export const defaultPalette: ColorPalette = [
     rgb: [230, 231, 232]
   }
 ]
+
+export function matchPixel(r: number, g: number, b: number, pallete: ColorPalette): string {
+  let result = "❓"
+  let closest = Infinity
+  for (const color of pallete) {
+    // squared euclidian distance
+    const [tr, tg, tb] = color.rgb
+    const distance = (r - tr) ** 2 + (g - tg) ** 2 + (b - tb) ** 2
+    if (distance < closest) {
+      closest = distance
+      result = color.emoji
+    }
+  }
+  return result
+}
