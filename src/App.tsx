@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState, type ChangeEvent } from "react"
-import { defaultPalette, matchPixel } from "./lib/color"
-import { useProperties, usePropertiesDispatch } from "./lib/state"
+import { useProperties } from "./lib/state"
 import Properties from "./components/Properties"
 import { img2emoji } from "./lib/image"
 
 export default function App() {
   const properties = useProperties()
-  const dispatch = usePropertiesDispatch()
   
   const [file, setFile] = useState<File | null>(null)
   const [output, setOutput] = useState("")
