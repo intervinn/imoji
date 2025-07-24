@@ -12,9 +12,9 @@ function matchPixel(r: number, g: number, b: number): string {
     case c.isBrown():
       return "🟫"
     case c.isRed():
-      return "🔴"
+      return "❤️"
     case c.isBlue():
-      return "🔵"
+      return "💙"
     case c.isOrange():
       return "🧡"
     case c.isYellow():
@@ -60,6 +60,7 @@ export default function App() {
 
     let pixls = 0
     let out = ""
+
     for (let i = 0; i < data.length; i+=4) {
       pixls++
       const r = data[i]
@@ -100,7 +101,7 @@ export default function App() {
             This page will try to recognize the pixels and convert them to emojis
           </li>
           <li>
-            The color range consists of ⬛⬜🟫🔴🔵🧡💛💚💜, unrecognized pixels will replace to ❓
+            The color range consists of ⬛⬜🟫❤️💙🧡💛💚💜, unrecognized pixels will replace to ❓
           </li>
           <li>
             Recommended for pixel arts of 48x48 and less, too big images will explode the page
