@@ -118,7 +118,7 @@ export class Color {
       return false
 
     return (
-        h <= 15 && h >= 345 &&
+        h <= 285 && h > 240 &&
         s >= 0.2 &&
         v >= 0.3
     )
