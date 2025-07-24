@@ -1,31 +1,19 @@
 import { useEffect, useRef, useState, type ChangeEvent } from "react"
-import { Color } from "./lib/color"
+import { defaultPalette, type ColorPalette } from "./lib/color"
 
-
-function matchPixel(r: number, g: number, b: number): string {
-  const c = new Color(r,g,b)
-  switch (true) {
-    case c.isBlack():
-      return "⬛"
-    case c.isWhite():
-      return "⬜"
-    case c.isBrown():
-      return "🟫"
-    case c.isRed():
-      return "❤️"
-    case c.isBlue():
-      return "💙"
-    case c.isOrange():
-      return "🧡"
-    case c.isYellow():
-      return "💛"
-    case c.isGreen():
-      return "💚"
-    case c.isPurple():
-      return "💜"
-    default:
-      return "❓"
+function matchPixel(r: number, g: number, b: number, pallete: ColorPalette): string {
+  let result = "❓"
+  let closest = Infinity
+  for (const color of pallete) {
+    // squared euclidian distance
+    const [tr, tg, tb] = color.rgb
+    const distance = (r - tr) ** 2 + (g - tg) ** 2 + (b - tb) ** 2
+    if (distance < closest) {
+      closest = distance
+      result = color.emoji
+    }
   }
+  return result
 }
 
 export default function App() {
@@ -56,8 +44,6 @@ export default function App() {
     const data = imageData?.data
     if (!data) return
 
-    console.log(data.length)
-
     let pixls = 0
     let out = ""
 
@@ -67,7 +53,9 @@ export default function App() {
       const g = data[i+1]
       const b = data[i+2]
 
-      const pixel = matchPixel(r,g,b)
+      console.log(r,g,b)
+
+      const pixel = matchPixel(r,g,b, defaultPalette)
       out += pixel
       if (pixls == img.width) {
         out += "\n"
