@@ -113,7 +113,7 @@ export class Color {
   }
 
   isPurple() {
-        const [h,s,v] = this.toHsv()
+    const [h,s,v] = this.toHsv()
     if (this.isBlack() || this.isWhite())
       return false
 
