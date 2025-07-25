@@ -25,6 +25,7 @@ export default function App() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
+    ctx.imageSmoothingEnabled = false
     canvas.width = img.width * properties.scale
     canvas.height = img.height * properties.scale
 

@@ -44,6 +44,10 @@ export const defaultPalette: ColorPalette = [
   {
     emoji: "⬜",
     rgb: [230, 231, 232]
+  },
+  {
+    emoji: "🌑",
+    rgb: [102, 117, 127]
   }
 ]
 
